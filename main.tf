@@ -14,10 +14,9 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"]
 }
 
-resource "aws_instance" "ec2-terraform" {
-  count = 5
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = "t2.micro"
+resource "aws_instance" "ansible_server" {
+  ami           = data.aws_ami.ami.id
+  instance_type = "t3.small" // t3.micro -> t3.small
 }
 
 output "ec2" {
