@@ -18,6 +18,9 @@ resource "aws_instance" "ec2-terraform" {
   count = 5
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t3.small"
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 output "ec2" {
   value = {
